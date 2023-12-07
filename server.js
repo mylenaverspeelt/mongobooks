@@ -1,4 +1,15 @@
 import express from "express"
+import dbConnect from "./src/config/dbConnect.js"
+
+const connection = await dbConnect();
+
+connection.on("error", (erro) => {
+    console.error("erro de conexão", erro)
+})
+
+connection.once("open", ()=>{
+    console.log("Conexão com a database feita com sucesso!");
+})
 
 const PORT = 3000
 
@@ -33,7 +44,7 @@ app.get("/books/:id", (req, res) => {
     res.status(200).json(booksList[indexBook])
 })
 
-app.put("/books/:id", (req, res)=>{
+app.put("/books/:id", (req, res) => {
     let indexBook = findBookInArray(req.params.id)
     booksList[indexBook].title = req.body.title
     res.status(200).json(booksList)
@@ -43,3 +54,11 @@ app.put("/books/:id", (req, res)=>{
 app.listen(PORT, () => {
     console.log("Escutando servidor na porta", 3000)
 })
+
+app.delete("/books/:id", (req, res) => {
+    let indexBook = findBookInArray(req.params.id)
+    booksList.splice(indexBook, 1)
+    res.status(200).send("Livro deletdo com sucesso!")
+})
+
+
