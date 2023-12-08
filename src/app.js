@@ -21,10 +21,10 @@ app.get("/", (req, res) => {
     res.status(200).send("Home")
 })
 
-app.get("/books", async (req, res) => {
-    const booksList = await bookModel.find({})
-    res.status(200).json(booksList)
-})
+// app.get("/books", async (req, res) => {
+//     const booksList = await bookModel.find({})
+//     res.status(200).json(booksList)
+// })
 
 app.post("/books", (req, res) => {
     booksList.push(req.body)
