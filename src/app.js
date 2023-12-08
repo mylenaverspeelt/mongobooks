@@ -15,12 +15,4 @@ connection.once("open", ()=>{
 const app = express()
 routes(app)
 
-
-app.delete("/books/:id", (req, res) => {
-    let indexBook = findBookInArray(req.params.id)
-    booksList.splice(indexBook, 1)
-    res.status(200).send("Livro deletdo com sucesso!")
-})
-
-
 export default app

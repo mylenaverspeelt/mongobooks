@@ -11,4 +11,7 @@ routes.post("/books", BookController.addNewBook)
 
 routes.put("/books/:id", BookController.updateBookTitle)
 
+routes.delete("/books/:id", BookController.deleteBook)
+
+
 export default routes

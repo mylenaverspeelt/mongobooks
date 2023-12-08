@@ -9,7 +9,7 @@ class BookController {
             res.status(200).json(booksList)
 
         } catch (error) {
-            res.status(500).json({ message: `${error.message} - fslha na requisição`})
+            res.status(500).json({ message: `${error.message} - fslha na requisição` })
         }
     }
 
@@ -20,7 +20,7 @@ class BookController {
             res.status(200).json(book)
 
         } catch (error) {
-            res.status(500).json({ message: `${error.message} - fslha na requisição`})
+            res.status(500).json({ message: `${error.message} - falha na requisição` })
         }
     }
 
@@ -32,7 +32,7 @@ class BookController {
             res.status(200).send("livro atualizado com sucesso")
 
         } catch (error) {
-            res.status(500).json({ message: `${error.message} - fslha na requisição`})
+            res.status(500).json({ message: `${error.message} - fslha ao atualizar o titulo do livro` })
         }
     }
 
@@ -46,6 +46,21 @@ class BookController {
             res.status(500).json({ message: `${error.message} - falha ao cadastrar livro!` })
         }
     }
+
+    static async deleteBook(req, res) {
+
+        try {
+
+            const id = req.params.id
+            await bookModel.findByIdAndDelete(id)
+            res.status(201).send("livro excluido com sucesso!")
+
+        } catch (error) {
+            res.status(500).json({ message: `${error.message} - falha ao deletar livro` })
+        }
+    }
+
+
 }
 
 export default BookController
