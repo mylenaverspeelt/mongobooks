@@ -1,5 +1,6 @@
 import express from "express"
 import dbConnect from "./src/config/dbConnect.js"
+import bookModel from "./src/models/Book.js";
 
 const connection = await dbConnect();
 
@@ -18,13 +19,12 @@ const app = express()
 //middleware: faz o parse das requisições pra json pois vem em string
 app.use(express.json())
 
-const booksList = [{ id: 1, title: "Hunguer Games" }, { id: 2, title: "Harry Potter" }]
-
 app.get("/", (req, res) => {
     res.status(200).send("Home")
 })
 
-app.get("/books", (req, res) => {
+app.get("/books", async (req, res) => {
+    const booksList = await bookModel.find({})
     res.status(200).json(booksList)
 })
 
