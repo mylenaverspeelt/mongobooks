@@ -36,7 +36,7 @@ npm i
 ```
 - configure as variaveis de ambiente no arquivo .env,
 - rode a aplicação com o comando:
-- ```
+```
 npm run dev
 ```
 
