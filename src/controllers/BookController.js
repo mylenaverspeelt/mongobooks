@@ -1,6 +1,7 @@
+import { authorModel } from "../models/Author.js"
 import bookModel from "../models/Book.js"
 
-//toda logica relacionada a ações que podem ser feitas sob um livro, req e res
+//classe com todos os metodos de req/res referentes a entidade book
 
 class BookController {
     static async getBooks(req, res) {
@@ -9,7 +10,7 @@ class BookController {
             res.status(200).json(booksList)
 
         } catch (error) {
-            res.status(500).json({ message: `${error.message} - fslha na requisição` })
+            res.status(500).json({ message: `${error.message} - falha ao buscar lista de livros` })
         }
     }
 
@@ -20,7 +21,7 @@ class BookController {
             res.status(200).json(book)
 
         } catch (error) {
-            res.status(500).json({ message: `${error.message} - falha na requisição` })
+            res.status(500).json({ message: `${error.message} - falha ao buscar livro específico` })
         }
     }
 
@@ -32,18 +33,22 @@ class BookController {
             res.status(200).send("livro atualizado com sucesso")
 
         } catch (error) {
-            res.status(500).json({ message: `${error.message} - fslha ao atualizar o titulo do livro` })
+            res.status(500).json({ message: `${error.message} - falha ao atualizar o titulo do livro` })
         }
     }
 
 
     static async addNewBook(req, res) {
 
+        const newBook = req.body
+
         try {
-            const newBook = await bookModel.create(req.body)
-            res.status(201).json({ message: "criado com sucesso!", book: newBook })
+            const authorFound = await authorModel.findById(newBook.author)
+            const completeBook = {... newBook, author: {... authorFound._doc}}
+            const createdBook = await bookModel.create(completeBook)
+            res.status(201).json({ message: "criado com sucesso!", book: createdBook })
         } catch (error) {
-            res.status(500).json({ message: `${error.message} - falha ao cadastrar livro!` })
+            res.status(500).json({ message: `${error.message} - falha ao cadastrar livro` })
         }
     }
 
@@ -59,7 +64,6 @@ class BookController {
             res.status(500).json({ message: `${error.message} - falha ao deletar livro` })
         }
     }
-
 
 }
 
