@@ -16,3 +16,6 @@ const app = express()
 routes(app)
 
 export default app
+
+
+//cria uma aplicação express, listeners pra checar a conexão, configura o modulo routes

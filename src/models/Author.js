@@ -10,3 +10,5 @@ const authorSchema = new mongoose.Schema({
 const authorModel = mongoose.model("authors", authorSchema)  
 
 export {authorModel, authorSchema}
+
+//ja que author é um atributo que compõe outra coleçao, tambem precisa exportar o schema pra conseguir fazer a referencia no modelo da coleção que usa ele (book)

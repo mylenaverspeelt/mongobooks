@@ -8,3 +8,5 @@ async function dbConnect() {
 }
 
 export default dbConnect
+
+//realiza a conexão com o mongoDB utilizando o mongoose

@@ -7,10 +7,11 @@ const bookSchema = new mongoose.Schema({
     publisher: { type: String },
     price: { type: Number },
     pages: { type: Number },
-    author: authorSchema
+    author: authorSchema    //referencing schema da coleçao onde ta a informaçao buscada
 }, { versionKey: false })   //sem versionar o schema
 
 
 const bookModel = mongoose.model("books", bookSchema)  // passa a coleção e o schema
 
 export default bookModel
+

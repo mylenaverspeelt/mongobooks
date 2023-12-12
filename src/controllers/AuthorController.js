@@ -37,17 +37,15 @@ class AuthorController {
     }
 
     static async addNewAuthor(req, res) {
-
         try {
             const newAuthor = await authorModel.create(req.body)
-            res.status(201).json({ message: "criado com sucesso!", author: newAuthor})
+            res.status(201).json({ message: "autor criado com sucesso!", author: newAuthor})
         } catch (error) {
             res.status(500).json({ message: `${error.message} - falha ao cadastrar autor` })
         }
     }
 
     static async deleteAuthor(req, res) {
-
         try {
             const id = req.params.id
             await authorModel.findByIdAndDelete(id)

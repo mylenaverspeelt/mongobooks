@@ -4,11 +4,12 @@ import authorsRoutes from "./AuthorsRoutes.js"
 
 
 const routes = (app) => {
-    app.route("/").get((req, res) =>
-        res.status(200).send("Curso de node js"))
-
+    app.route("/").get(
         //middleware: faz o parse das requisições pra json pois vem em string
-        app.use(express.json(), booksRoutes, authorsRoutes)
+        app.use(express.json(), booksRoutes, authorsRoutes))
 }
 
 export default routes
+
+
+//ponto inicial pra todas as rotas usadas pela aplicação
