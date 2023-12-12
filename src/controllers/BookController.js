@@ -43,7 +43,7 @@ class BookController {
 
         try {
             const authorFound = await authorModel.findById(newBook.author)
-            const completeBook = {... newBook, author: {... authorFound._doc}}    //._doc pra acessar as informações especificas pois o mongo retorna muitas infos no json
+            const completeBook = { ...newBook, author: { ...authorFound._doc } }    //._doc pra acessar as informações especificas pois o mongo retorna muitas infos no json
             const createdBook = await bookModel.create(completeBook)  //só dar o create após o objeto ser criado por completo (newBook + authorFound)
             res.status(201).json({ message: "liro criado com sucesso!", book: createdBook })
         } catch (error) {
@@ -52,7 +52,6 @@ class BookController {
     }
 
     static async deleteBook(req, res) {
-
         try {
             const id = req.params.id
             await bookModel.findByIdAndDelete(id)
@@ -60,6 +59,17 @@ class BookController {
 
         } catch (error) {
             res.status(500).json({ message: `${error.message} - falha ao deletar livro` })
+        }
+    }
+
+    static async listBooksByPublisher(req, res) {
+
+        const query = req.query.publisher
+        try {
+            const booksByPublisher = await bookModel.find({ publisher: query })
+            res.status(200).json(booksByPublisher)
+        } catch (error) {
+            res.status(500).json({ message: `${error.message} - falha ao localizar livros por editora` })
         }
     }
 }
