@@ -7,7 +7,6 @@ class AuthorController {
     try {
       const authorsList = await authorModel.find({})
       res.status(200).json(authorsList)
-
     } catch (error) {
       next(error)
     }
@@ -46,7 +45,6 @@ class AuthorController {
       res.status(201).json({ message: "autor criado com sucesso!", author: newAuthor })
     } catch (error) {
       next(error)
-    
     }
   }
 
