@@ -2,6 +2,7 @@ import express from "express"
 import dbConnect from "./config/dbConnect.js"
 import routes from "./routes/index.js"
 import errorHandler from "./middlewares/errorHandler.js"
+import error404Handler from "./middlewares/error404Handler.js"
 
 const connection = await dbConnect()
 
@@ -16,11 +17,12 @@ connection.once("open", () => {
 const app = express()
 routes(app)
 
-//middleware de erro,
+//middlewares de erro
+app.use(error404Handler)
 app.use(errorHandler)
 
 export default app
 
-//cria uma aplicação express, listeners pra checar a conexão, configura o modulo routes
+//cria uma aplicação express, listeners pra checar a conexão, configura o modulo routes e trata erros de requisiçao
 
 

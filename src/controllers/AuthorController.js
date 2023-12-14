@@ -1,3 +1,4 @@
+import NotFoundError from "../errors/NotFoundError.js"
 import { authorModel } from "../models/Author.js"
 
 //classe com todos os metodos de req/res referentes a entidade author
@@ -20,7 +21,8 @@ class AuthorController {
       if (author !== null) {
         res.status(200).json(author)
       } else {
-        res.status(404).send("Id do Autor não localizado")
+        const notFound = new NotFoundError("Id do Autor não localizado")
+        next(notFound)
       }
     } catch (error) {
       //metodo que manda pro middleware o erro encontrado
