@@ -20,7 +20,6 @@ class BookController {
       res.status(200).json(book)
     } catch (error) {
       next(error)
-
     }
   }
 
@@ -32,7 +31,6 @@ class BookController {
       res.status(200).send("livro atualizado com sucesso")
     } catch (error) {
       next(error)
-
     }
   }
 
@@ -47,7 +45,6 @@ class BookController {
       res.status(201).json({ message: "liro criado com sucesso!", book: createdBook })
     } catch (error) {
       next(error)
-
     }
   }
 
@@ -58,7 +55,6 @@ class BookController {
       res.status(201).send("livro excluido com sucesso!")
     } catch (error) {
       next(error)
-
     }
   }
 

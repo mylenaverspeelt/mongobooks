@@ -1,12 +1,9 @@
-import express from "express"
 import booksRoutes from "./BooksRoutes.js"
 import authorsRoutes from "./AuthorsRoutes.js"
 
 
 const routes = (app) => {
-  app.route("/").get(
-    //middleware: faz o parse das requisições pra json pois vem em string
-    app.use(express.json(), booksRoutes, authorsRoutes))
+  app.use(booksRoutes, authorsRoutes)
 }
 
 export default routes

@@ -11,10 +11,12 @@ connection.on("error", (erro) => {
 })
 
 connection.once("open", () => {
-  console.log("Conexão com a database feita com sucesso!")
+  console.log("conexão com a database feita com sucesso!")
 })
 
 const app = express()
+//middleware de parse do json
+app.use(express.json())
 routes(app)
 
 //middlewares de erro
