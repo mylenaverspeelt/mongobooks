@@ -1,5 +1,5 @@
 import NotFoundError from "../errors/NotFoundError.js"
-import { authorModel } from "../models/Author.js"
+import { authorModel } from "../models/index.js"
 
 //classe com todos os metodos de req/res referentes a entidade author
 

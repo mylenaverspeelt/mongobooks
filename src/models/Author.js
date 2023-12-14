@@ -7,7 +7,7 @@ const authorSchema = new mongoose.Schema({
   //segundo parametro é uma msg personalizada de erro
   name: {
     type: String,
-    required: [true, "Nome da autora/autor é obrigatório"]
+    required: [true, "Nome do autor é obrigatório"]
   },
   nationality: {
     type: String
@@ -17,6 +17,6 @@ const authorSchema = new mongoose.Schema({
 
 const authorModel = mongoose.model("authors", authorSchema)
 
-export { authorModel, authorSchema }
+export default authorModel
 
 //ja que author é um atributo que compõe outra coleçao, tambem precisa exportar o schema pra conseguir fazer a referencia no modelo da coleção que usa ele (book)

@@ -1,5 +1,4 @@
-import { authorModel } from "../models/Author.js"
-import bookModel from "../models/Book.js"
+import {authorModel, bookModel}  from "../models/index.js"
 
 //classe com todos os metodos de req/res referentes a entidade book
 
