@@ -8,6 +8,7 @@ API Rest de uma livraria fictícia.
 - Dotenv
 - Thunder Client
 - MongoDB
+- NodeJS
 
 ### Recursos e Funcionalidades:
 - modelagem das abstrações da aplicação
