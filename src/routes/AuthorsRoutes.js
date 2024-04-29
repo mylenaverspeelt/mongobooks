@@ -13,5 +13,4 @@ routes.put("/authors/:id", AuthorController.updateAuthorName)
 
 routes.delete("/authors/:id", AuthorController.deleteAuthor)
 
-
 export default routes

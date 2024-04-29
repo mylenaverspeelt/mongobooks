@@ -11,7 +11,8 @@ API Rest de uma livraria fictícia.
 - NodeJS
 
 ### Recursos e Funcionalidades:
-- modelagem das abstrações da aplicação
+- É possível listar todos os autores, cadastrar um novo autor, procurar autor por ID, atualizar o nome do autor e deletar o autor
+- Também é possivel listar todos os livros, listar todos os livros por Editora, listar livro por ID, adicionar novo livro, atualizar o titulo do livro e deletar um livro.
 
 ### Repositórios Originais:
 O projeto foi realizado durante os cursos abaixo e os repositórios originais podem ser consultados através dos links:
@@ -20,14 +21,14 @@ O projeto foi realizado durante os cursos abaixo e os repositórios originais po
 
 ### Melhorias:
 Além do que foi proposto nos cursos, realizei algumas melhorias como:
-- renomeei métodos, classes e atributos que julguei estarem com legibilidade baixa/dubia
-- codei o projeto em um unico idioma (ingles) mostrando apenas em portugues as mensagens exibidas ao usuário
+- Renomeei métodos, classes e atributos que julguei estarem com legibilidade baixa/dubia
+- Codei o projeto em um unico idioma (ingles) mostrando apenas em portugues as mensagens exibidas ao usuário
 
 ### Executando a aplicação:
 Pré-requisitos:
 - certifique-se de ter o Node instalado na sua máquina 
 - configurar um banco de dados MongoDB e ter em mãos a string de conexão
-- você pode utilizar a IDE e interface para enviar solicitações http da sua preferencia, porem recomendo utilizar o VSCode pois com a extensão Thunder Client é possível testar as rotas de forma descomplicada e rápida.
+- você pode utilizar a IDE e interface para testar as requisições de sua preferência, porem recomendo utilizar o VSCode pois com a extensão Thunder Client é possível testar as rotas de forma descomplicada e rápida.
 
 Executar o projeto:
 - clone o repositório
@@ -35,11 +36,13 @@ Executar o projeto:
 ```
 npm i 
 ```
-- configure as variaveis de ambiente no arquivo .env,
+- adicionar a string de conexão com a base de dados no arquivo .env (verificar o arquivo example.env),
 - rode a aplicação com o comando:
 ```
 npm run dev
 ```
+- O servidor estará escutando na porta 3000
+- Verifique quais as rotas disponiveis na pasta src/routes, abra o thunder client para realizar os testes.
 
 ### Contribuindo com o projeto:
 - Crie um fork do repositório
